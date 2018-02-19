@@ -1,7 +1,10 @@
-// Maven location
-def mvnHome = tool name: 'maven 3_3_9', type: 'hudson.tasks.Maven$MavenInstallation'
-env.MAVEN_HOME = mvnHome
+# Jenkinsfile
+# Build and test a Maven project
 
-// Begin Compile
-stage concurrency: 1, name: 'compile'
-sh '''${MAVEN_HOME}/bin/mvn clean compile'''
+node {
+  git url: 'https://github.com/parasgautam2011/springbootcrud.git'
+  def mvnHome = tool 'M2'
+  sh "${mvnHome}/bin/mvn -B -Dmaven.test.failure.ignore verify"
+  step([$class: 'JUnitResultArchiver', testResults:
+'**/target/foobar/TEST-*.xml'])
+}
