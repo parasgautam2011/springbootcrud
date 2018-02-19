@@ -1,5 +1,4 @@
-# Jenkinsfile
-# Build and test a Maven project
+
 
 node {
   git url: 'https://github.com/parasgautam2011/springbootcrud.git'
