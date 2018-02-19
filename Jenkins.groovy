@@ -1,13 +1,7 @@
-node {
-    // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
-   
-    def buildInfo
+// Maven location
+def mvnHome = tool name: 'maven 3_5_0', type: 'hudson.tasks.Maven$MavenInstallation'
+env.MAVEN_HOME = M2_HOME
 
-  
-
-    stage('Maven build') {
-        buildInfo = rtMaven.run pom: 'maven-example/pom.xml', goals: 'clean install'
-    }
-
-    
-}
+// Begin Compile
+stage concurrency: 1, name: 'compile'
+sh '''${MAVEN_HOME}/bin/mvn clean compile'''
