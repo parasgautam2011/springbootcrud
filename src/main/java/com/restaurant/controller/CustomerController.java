@@ -19,12 +19,6 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerService customerService;
-	
-	@GetMapping("/")
-	public String home() {
-		return "home";
-	}
-	
 
 	@GetMapping("/customers")
 	public List<Customer> getAllCustomers() {

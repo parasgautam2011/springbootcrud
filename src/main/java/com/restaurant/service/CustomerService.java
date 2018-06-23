@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.restaurant.dao.CustomerRepo;
 import com.restaurant.model.Customer;
-import com.restaurant.repository.CustomerRepo;
 
 @Service
 public class CustomerService {
@@ -17,18 +17,18 @@ public class CustomerService {
 
 	//list all customers
 	public List<Customer> getAllCustomers() {
-		return new ArrayList<Customer>(customerRepo.getCustomersMap().values());
+		return new ArrayList<Customer>(customerRepo.getCustomerMap().values());
 	}
 
 	//get a particular customer by customer id
 	public Customer getCustomerById(int id) {
-		return customerRepo.getCustomersMap().get(id);
+		return customerRepo.getCustomerMap().get(id);
 	}
 
 	//add a new customer
 	public Customer addCustomer(Customer customer) {
-		customer.setId(customerRepo.getCustomersMap().size()+1);
-		customerRepo.getCustomersMap().put(customer.getId(), customer);
+		customer.setId(customerRepo.getCustomerMap().size()+1);
+		customerRepo.getCustomerMap().put(customer.getId(), customer);
 		return customer;
 	}
 	
@@ -37,14 +37,14 @@ public class CustomerService {
 		if(customer.getId()<0) {
 			return null;
 		}else {
-			customerRepo.getCustomersMap().put(customer.getId(), customer);
+			customerRepo.getCustomerMap().put(customer.getId(), customer);
 			return customer;
 		}
 	}
 	
 	//delete a customer
 	public Customer removeCustomer(int id) {
-		return customerRepo.getCustomersMap().remove(id);
+		return customerRepo.getCustomerMap().remove(id);
 	}
 }
 
