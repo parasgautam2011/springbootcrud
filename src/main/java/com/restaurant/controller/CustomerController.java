@@ -24,25 +24,25 @@ public class CustomerController {
 	public List<Customer> getAllCustomers() {
 		return customerService.getAllCustomers();
 	}
-	
-	@GetMapping("/customers/{customerId}")
-	public Customer getCustomerById(@PathVariable ("customerId") int custId) {
-		return customerService.getCustomerById(custId);
-	}
-	
-	@PostMapping("/customers")
-	public Customer addCustomer(@RequestBody Customer customer) {
-		return customerService.addCustomer(customer);
-	}
-	
-	@PutMapping("/customers/{customerId}")
-	public Customer updateCustomer(@PathVariable("customerId") int custId, @RequestBody Customer customer) {
-		return customerService.updateCustomer(customer);
-	}
-	
-	@DeleteMapping("/customers/{customerId}")
-	public Customer deleteCustomer(@PathVariable("customerId") int custId) {
-		return customerService.removeCustomer(custId);
-	}
+//
+//	@GetMapping("/customers/{customerId}")
+//	public Customer getCustomerById(@PathVariable ("customerId") int custId) {
+//		return customerService.getCustomerById(custId);
+//	}
+//
+//	@PostMapping("/customers")
+//	public Customer addCustomer(@RequestBody Customer customer) {
+//		return customerService.addCustomer(customer);
+//	}
+//
+//	@PutMapping("/customers/{customerId}")
+//	public Customer updateCustomer(@PathVariable("customerId") int custId, @RequestBody Customer customer) {
+//		return customerService.updateCustomer(customer);
+//	}
+//
+//	@DeleteMapping("/customers/{customerId}")
+//	public Customer deleteCustomer(@PathVariable("customerId") int custId) {
+//		return customerService.removeCustomer(custId);
+//	}
 
 }
