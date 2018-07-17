@@ -1,14 +1,13 @@
 package com.restaurant.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.restaurant.dao.CustomerRepo;
+import com.restaurant.model.Customer;
 import com.restaurant.model.CustomerDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.restaurant.dao.CustomerRepo;
-import com.restaurant.model.Customer;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -32,12 +31,18 @@ public class CustomerService {
 		}
 		return customers;
 	}
-//
-//	//get a particular customer by customer id
-//	public Customer getCustomerById(int id) {
-//		return customerRepo.getCustomerMap().get(id);
-//	}
-//
+
+	//get a particular customer by customer id
+	public Customer getCustomerById(int id) {
+		CustomerDto customerDto =  customerRepo.getCustomerMap().get(id);
+		Customer customer = new Customer();
+		customer.setFirstName(customerDto.getCustomerFirstName());
+		customer.setLastName(customerDto.getCustomerLastName());
+		customer.setId(customerDto.getCustomerId());
+		return customer;
+
+	}
+
 //	//add a new customer
 //	public Customer addCustomer(Customer customer) {
 //		customer.setId(customerRepo.getCustomerMap().size()+1);
